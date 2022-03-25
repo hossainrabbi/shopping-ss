@@ -34,11 +34,7 @@ export default function Slider() {
     >
       {slidImage.map((slide) => (
         <SwiperSlide className="h-96" key={slide.id}>
-          <img
-            className="h-full w-full object-cover"
-            src={slide?.image}
-            alt="Slide"
-          />
+          <img className="cover__img" src={slide?.image} alt="Slide" />
         </SwiperSlide>
       ))}
     </Swiper>

@@ -6,4 +6,8 @@
   .main__container {
     @apply container mx-auto px-4;
   }
+
+  .cover__img {
+    @apply h-full w-full object-cover;
+  }
 }
