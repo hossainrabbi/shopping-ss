@@ -1,11 +1,9 @@
 import React from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../images/logo.png';
 
 export default function Navbar() {
-  const activeStyle = {
-    textDecoration: 'underline',
-  };
   return (
     <nav className="shadow h-16">
       <div className="main__container h-full">
@@ -13,7 +11,16 @@ export default function Navbar() {
           <Link className="h-10" to="/">
             <img className="max-h-full" src={Logo} alt="Logo" />
           </Link>
-          <div>
+          <div className="flex items-center">
+            <NavLink
+              to="/cart"
+              className="btn_icon_round hover:text-gray-800 hover:bg-gray-200 mx-3 relative"
+            >
+              <FaShoppingCart className="text-lg" />
+              <span className="btn_icon_round text-xs h-5 w-5 absolute -top-1 -right-2 bg-blue-800 hover:bg-blue-800 text-white hover:text-white">
+                1
+              </span>
+            </NavLink>
             <NavLink
               to="/login"
               className={({ isActive }) =>
