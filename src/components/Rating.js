@@ -4,7 +4,7 @@ import { FaRegStar, FaStar } from 'react-icons/fa';
 export default function Rating({ rate, onClick, ...rest }) {
   return [...Array(5)].map((_, i) => (
     <span
-      className="text-orange-500"
+      className="text-orange-500 mb-0.5"
       onClick={(i) => onClick(i)}
       {...rest}
       key={i}

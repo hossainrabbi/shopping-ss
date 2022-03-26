@@ -1,10 +1,16 @@
 import React from 'react';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import Rating from './Rating';
 
-export default function Product({ image, price, title, rating }) {
+export default function Product({ image, price, title, rating, id }) {
+  const navigate = useNavigate();
+
   return (
-    <article className="shadow-sm bg-white rounded-md duration-200 transition-shadow hover:shadow-md">
+    <article
+      className="shadow-sm bg-white rounded-md duration-200 cursor-pointer transition-shadow hover:shadow-md"
+      onClick={() => navigate(`/products/${id}`)}
+    >
       <div className="h-72 relative overflow-hidden transition">
         <img className="cover__img object-contain" src={image} alt={title} />
         <div className="absolute right-2 top-2 flex flex-col items-center gap-3 w-10 h-full">
@@ -22,6 +28,7 @@ export default function Product({ image, price, title, rating }) {
           <h5 className="text-lg text-orange-500 font-bold">${price}</h5>
           <div className="flex items-center justify-end">
             <Rating rate={rating.rate} />
+            <span className="text-gray-800 ml-2">({rating.count})</span>
           </div>
         </div>
       </div>
