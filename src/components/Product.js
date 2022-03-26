@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from './Rating';
 
 export default function Product({ image, price, title, rating }) {
   return (
@@ -10,7 +11,9 @@ export default function Product({ image, price, title, rating }) {
         <h4 className="text-md text-gray-800">{title}</h4>
         <div className="flex justify-between items-center mt-2">
           <h5 className="text-lg text-orange-500 font-bold">${price}</h5>
-          <h5 className="text-lg text-orange-500">{rating.rate}</h5>
+          <div className="flex items-center justify-end">
+            <Rating rate={rating.rate} />
+          </div>
         </div>
       </div>
     </article>
