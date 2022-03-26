@@ -10,4 +10,8 @@
   .cover__img {
     @apply h-full w-full object-cover;
   }
+
+  .btn_icon_round {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-800 hover:text-gray-200 w-full h-10 rounded-full transition-colors duration-200;
+  }
 }
