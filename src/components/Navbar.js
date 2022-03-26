@@ -15,16 +15,26 @@ export default function Navbar() {
           </Link>
           <div>
             <NavLink
-              className="text-gray-600 px-1 mx-3 transition-colors hover:text-gray-800 last:mr-0"
               to="/login"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? 'text-blue-800 underline decoration-blue-500 underline-offset-2'
+                    : undefined
+                } text-gray-600 px-1 mx-3 transition-colors hover:text-gray-800 last:mr-0`
+              }
             >
               Login
             </NavLink>
             <NavLink
-              className="text-gray-600 px-1 mx-3 transition-colors hover:text-gray-800 last:mr-0"
               to="/signup"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? 'text-blue-800 underline decoration-blue-500 underline-offset-2'
+                    : undefined
+                } text-gray-600 px-1 mx-3 transition-colors hover:text-gray-800 last:mr-0`
+              }
             >
               Signup
             </NavLink>

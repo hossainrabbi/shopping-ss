@@ -26,10 +26,8 @@ export default function Products() {
   }
 
   return displayProducts.length > 0 ? (
-    <section className="main__container mb-36">
-      <h2 className="mt-16 mb-8 uppercase text-center text-4xl text-gray-800">
-        Products
-      </h2>
+    <section className="main__container pt-16 mb-36">
+      <h2 className="header_title">Products</h2>
       <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {displayProducts.map((product) => (
           <Product {...product} key={product.id} />
