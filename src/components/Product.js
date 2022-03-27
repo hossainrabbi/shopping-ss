@@ -23,7 +23,7 @@ export default function Product({ product }) {
           </button>
           {cart.some((cartItem) => cartItem.id === product.id) ? (
             <button
-              className="btn_icon_round text-white bg-orange-600"
+              className="btn_icon_round text-white bg-blue-600"
               onClick={() =>
                 productsDispatch({
                   type: 'REMOVE_FROM_CART',

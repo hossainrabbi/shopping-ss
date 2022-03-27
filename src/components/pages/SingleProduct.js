@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useProductsContext } from '../../contexts/ProductsContext';
 import Rating from '../Rating';
 
 export default function SingleProduct() {
-  const [show, setShow] = useState(false);
-  const { loading, error, products } = useProductsContext();
+  const {
+    loading,
+    error,
+    products,
+    productsState: { cart },
+    productsDispatch,
+  } = useProductsContext();
   const { id } = useParams();
 
   const findProduct = products.find((product) => product.id === parseInt(id));
@@ -45,25 +50,28 @@ export default function SingleProduct() {
                 </span>
               </div>
             </div>
-
             <div className="mt-5">
-              {show ? (
-                <>
-                  <button disabled className="btn rounded-l-md w-11">
-                    -
-                  </button>
-                  <button
-                    onClick={() => setShow(false)}
-                    className="btn border-x-2 border-blue-300"
-                  >
-                    Remove from Cart
-                  </button>
-                  <button className="btn rounded-r-md w-11">+</button>
-                </>
+              {cart.some((cartItem) => cartItem.id === findProduct.id) ? (
+                <button
+                  onClick={() =>
+                    productsDispatch({
+                      type: 'REMOVE_FROM_CART',
+                      payload: findProduct,
+                    })
+                  }
+                  className="btn border-x-2 border-blue-300"
+                >
+                  Remove from Cart
+                </button>
               ) : (
                 <button
-                  onClick={() => setShow(true)}
-                  className="btn border-x-2 rounded-md border-blue-300"
+                  onClick={() =>
+                    productsDispatch({
+                      type: 'ADD_TO_CART',
+                      payload: findProduct,
+                    })
+                  }
+                  className="btn border-x-2 border-blue-300"
                 >
                   Add to Cart
                 </button>
