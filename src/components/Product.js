@@ -1,10 +1,17 @@
 import React from 'react';
 import { FaHeart, FaShare, FaShoppingCart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useProductsContext } from '../contexts/ProductsContext';
 import Rating from './Rating';
 
-export default function Product({ image, price, title, rating, id }) {
+export default function Product({ product }) {
   const navigate = useNavigate();
+  const {
+    productsState: { cart },
+    productsDispatch,
+  } = useProductsContext();
+
+  const { image, price, title, rating, id } = product;
 
   return (
     <article className="shadow-sm bg-white rounded-md duration-200 transition-shadow hover:shadow-md">
@@ -14,9 +21,33 @@ export default function Product({ image, price, title, rating, id }) {
           <button className="btn_icon_round">
             <FaHeart className="w-full text-lg" />
           </button>
-          <button className="btn_icon_round">
-            <FaShoppingCart className="w-full text-lg" />
-          </button>
+          {cart.some((cartItem) => cartItem.id === product.id) ? (
+            <button
+              className="btn_icon_round text-white bg-orange-600"
+              onClick={() =>
+                productsDispatch({
+                  type: 'REMOVE_FROM_CART',
+                  payload: product,
+                })
+              }
+              title="Remove from Cart"
+            >
+              <FaShoppingCart className="w-full text-lg" />
+            </button>
+          ) : (
+            <button
+              className="btn_icon_round"
+              onClick={() =>
+                productsDispatch({
+                  type: 'ADD_TO_CART',
+                  payload: product,
+                })
+              }
+              title="Add to Cart"
+            >
+              <FaShoppingCart className="w-full text-lg" />
+            </button>
+          )}
           <button
             className="btn_icon_round"
             onClick={() => navigate(`/products/${id}`)}

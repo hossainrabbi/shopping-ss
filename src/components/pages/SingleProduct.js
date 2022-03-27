@@ -10,8 +10,6 @@ export default function SingleProduct() {
 
   const findProduct = products.find((product) => product.id === parseInt(id));
 
-  console.log(findProduct);
-
   if (loading) {
     return <div className="main__container">Loading...</div>;
   }

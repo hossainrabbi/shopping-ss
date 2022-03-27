@@ -30,7 +30,7 @@ export default function Products() {
       <h2 className="header_title">Products</h2>
       <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {displayProducts.map((product) => (
-          <Product {...product} key={product.id} />
+          <Product product={product} key={product.id} />
         ))}
       </div>
       <ReactPaginate
