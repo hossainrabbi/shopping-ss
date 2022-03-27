@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useProductsContext } from '../../contexts/ProductsContext';
 
 export default function Cart() {
@@ -31,11 +32,27 @@ export default function Cart() {
                       alt={cartItem.title}
                     />
                   </td>
-                  <td className="cart_item">{cartItem.title}</td>
+                  <td className="cart_item">
+                    <Link
+                      className="cursor-pointer hover:underline"
+                      to={`/products/${cartItem.id}`}
+                    >
+                      {cartItem.title}
+                    </Link>
+                  </td>
                   <td className="cart_item text-center">${cartItem.price}</td>
                   <td className="cart_item">
                     <div className="flex">
-                      <button className="btn rounded-none rounded-l-md w-11">
+                      <button
+                        disabled={cartItem?.qty <= 1}
+                        className="btn rounded-none rounded-l-md w-11"
+                        onClick={() =>
+                          productsDispatch({
+                            type: 'DECREMENT_QTY',
+                            payload: cartItem,
+                          })
+                        }
+                      >
                         -
                       </button>
                       <button
