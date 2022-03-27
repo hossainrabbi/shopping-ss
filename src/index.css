@@ -30,4 +30,8 @@
   .input_box {
     @apply w-full p-3 border-2 outline-0 mb-3;
   }
+
+  .cart_item {
+    @apply p-4;
+  }
 }
