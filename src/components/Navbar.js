@@ -17,7 +17,10 @@ export default function Navbar() {
             <img className="max-h-full" src={Logo} alt="Logo" />
           </Link>
           <div className="flex items-center">
-            <NavLink to="/cart" className="btn_icon_round mx-3 relative">
+            <NavLink
+              to="/cart"
+              className="btn_icon_round hover:text-gray-800 hover:bg-gray-200 mx-3 relative"
+            >
               <FaShoppingCart className="text-lg" />
               <span className="btn_icon_round text-xs h-5 w-5 absolute -top-1 -right-2 bg-orange-600 text-white">
                 {cart.length}

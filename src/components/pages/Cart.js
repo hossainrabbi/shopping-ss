@@ -3,6 +3,9 @@ import { AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useProductsContext } from '../../contexts/ProductsContext';
+import emptyCart from '../../images/empty-cart.jpg';
+import NotFound from '../NotFound';
+import TotalCart from '../TotalCart';
 
 export default function Cart() {
   const {
@@ -10,10 +13,16 @@ export default function Cart() {
     productsDispatch,
   } = useProductsContext();
 
+  const subtotalAll =
+    Math.round(
+      cart.reduce((acc, current) => acc + current.price * current?.qty, 0) *
+        1000
+    ) / 1000;
+
   return (
     <section className="main__container py-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-        {cart.length > 0 ? (
+      {cart.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
           <table className="col-span-2 table-fixed w-full border">
             <thead>
               <tr className="border">
@@ -99,16 +108,15 @@ export default function Cart() {
               ))}
             </tbody>
           </table>
-        ) : (
-          <div className="col-span-2 table-fixed w-full">
-            No items available
-          </div>
-        )}
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-          accusamus!
+
+          <TotalCart subtotalAll={subtotalAll} />
         </div>
-      </div>
+      ) : (
+        <NotFound
+          text="You have no items in your shopping cart."
+          image={emptyCart}
+        />
+      )}
     </section>
   );
 }
