@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useProductsContext } from '../../contexts/ProductsContext';
 
 export default function Cart() {
@@ -79,12 +80,16 @@ export default function Cart() {
                     ${Math.round(cartItem.price * cartItem?.qty * 1000) / 1000}
                     <button
                       className="btn_icon_round absolute top-1 right-1 text-xl"
-                      onClick={() =>
+                      onClick={() => {
                         productsDispatch({
                           type: 'REMOVE_FROM_CART',
                           payload: cartItem,
-                        })
-                      }
+                        });
+
+                        toast.error(`Remove: ${cartItem.title}!`, {
+                          position: toast.POSITION.TOP_RIGHT,
+                        });
+                      }}
                     >
                       <AiFillDelete />
                     </button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { IoReturnUpBackOutline } from 'react-icons/io5';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useProductsContext } from '../../contexts/ProductsContext';
 import Rating from '../Rating';
 
@@ -61,24 +62,32 @@ export default function SingleProduct() {
             <div className="mt-5">
               {cart.some((cartItem) => cartItem.id === findProduct.id) ? (
                 <button
-                  onClick={() =>
+                  onClick={() => {
                     productsDispatch({
                       type: 'REMOVE_FROM_CART',
                       payload: findProduct,
-                    })
-                  }
+                    });
+
+                    toast.error(`Remove: ${findProduct.title}!`, {
+                      position: toast.POSITION.TOP_RIGHT,
+                    });
+                  }}
                   className="btn border-x-2 border-blue-300"
                 >
                   Remove from Cart
                 </button>
               ) : (
                 <button
-                  onClick={() =>
+                  onClick={() => {
                     productsDispatch({
                       type: 'ADD_TO_CART',
                       payload: findProduct,
-                    })
-                  }
+                    });
+
+                    toast.success('Add to Cart Successfully!', {
+                      position: toast.POSITION.TOP_RIGHT,
+                    });
+                  }}
                   className="btn border-x-2 border-blue-300"
                 >
                   Add to Cart

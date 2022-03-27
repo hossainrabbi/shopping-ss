@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import ProductsContext from '../contexts/ProductsContext';
 import Layout from './Layout';
 import Cart from './pages/Cart';
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </Layout>
+      <ToastContainer autoClose={1000} />
     </ProductsContext>
   );
 }
