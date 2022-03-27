@@ -47,7 +47,7 @@ export default function Cart() {
                     <div className="flex">
                       <button
                         disabled={cartItem?.qty <= 1}
-                        className="btn rounded-none rounded-l-md w-11"
+                        className="btn rounded-none rounded-l-md px-5 w-11"
                         onClick={() =>
                           productsDispatch({
                             type: 'DECREMENT_QTY',
@@ -59,12 +59,13 @@ export default function Cart() {
                       </button>
                       <button
                         disabled
-                        className="btn rounded-none border-x-2 px-5 border-blue-300"
+                        className="btn rounded-none border-x-2 px-5 
+                        disabled:text-gray-800 disabled:bg-transparent"
                       >
                         {cartItem?.qty}
                       </button>
                       <button
-                        className="btn rounded-none rounded-r-md w-11"
+                        className="btn rounded-none rounded-r-md px-5 w-11"
                         onClick={() =>
                           productsDispatch({
                             type: 'INCREMENT_QTY',
@@ -99,7 +100,9 @@ export default function Cart() {
             </tbody>
           </table>
         ) : (
-          <div>No items available</div>
+          <div className="col-span-2 table-fixed w-full">
+            No items available
+          </div>
         )}
         <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
