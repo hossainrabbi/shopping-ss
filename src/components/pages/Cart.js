@@ -4,24 +4,25 @@ import { useProductsContext } from '../../contexts/ProductsContext';
 export default function Cart() {
   const {
     productsState: { cart },
+    productsDispatch,
   } = useProductsContext();
 
   return (
     <section className="main__container py-10">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-        <table className="col-span-2 table-fixed w-full border">
-          <thead>
-            <tr className="border">
-              <th className="cart_item">Item</th>
-              <th className="cart_item">Name</th>
-              <th className="cart_item">Price</th>
-              <th className="cart_item">Qty</th>
-              <th className="cart_item">Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.length > 0 ? (
-              cart.map((cartItem) => (
+        {cart.length > 0 ? (
+          <table className="col-span-2 table-fixed w-full border">
+            <thead>
+              <tr className="border">
+                <th className="cart_item">Item</th>
+                <th className="cart_item">Name</th>
+                <th className="cart_item">Price</th>
+                <th className="cart_item">Qty</th>
+                <th className="cart_item">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((cartItem) => (
                 <tr className="border" key={cartItem.id}>
                   <td className="cart_item">
                     <img
@@ -43,7 +44,15 @@ export default function Cart() {
                       >
                         {cartItem?.qty}
                       </button>
-                      <button className="btn rounded-none rounded-r-md w-11">
+                      <button
+                        className="btn rounded-none rounded-r-md w-11"
+                        onClick={() =>
+                          productsDispatch({
+                            type: 'INCREMENT_QTY',
+                            payload: cartItem,
+                          })
+                        }
+                      >
                         +
                       </button>
                     </div>
@@ -52,12 +61,12 @@ export default function Cart() {
                     ${Math.round(cartItem.price * cartItem?.qty * 1000) / 1000}
                   </td>
                 </tr>
-              ))
-            ) : (
-              <div>No items available</div>
-            )}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div>No items available</div>
+        )}
         <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
           accusamus!

@@ -16,6 +16,15 @@ export const productsReducer = (state, action) => {
           (cartItem) => cartItem.id !== action.payload.id
         ),
       };
+    case 'INCREMENT_QTY':
+      return {
+        ...state,
+        cart: state.cart.filter((cartItem) =>
+          cartItem.id === action.payload.id
+            ? (cartItem.qty = cartItem.qty + 1)
+            : cartItem.qty
+        ),
+      };
     default:
       return state;
   }
