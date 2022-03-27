@@ -31,7 +31,7 @@ export default function SingleProduct() {
         <div className="grid grid-cols-1 gap-7 items-center md:grid-cols-2">
           <div className="w-full aspect-video relative">
             <button
-              className="btn_icon_round absolute left-5 h-12 w-12 hover:bg-blue-600 hover:text-white text-2xl"
+              className="btn_icon_round absolute left-5 h-12 w-12 text-2xl"
               onClick={() => navigate(-1)}
             >
               <IoReturnUpBackOutline />

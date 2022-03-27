@@ -78,7 +78,7 @@ export default function Cart() {
                   <td className="cart_item text-center relative">
                     ${Math.round(cartItem.price * cartItem?.qty * 1000) / 1000}
                     <button
-                      className="btn_icon_round absolute top-1 right-1 hover:bg-blue-600 hover:text-white text-xl"
+                      className="btn_icon_round absolute top-1 right-1 text-xl"
                       onClick={() =>
                         productsDispatch({
                           type: 'REMOVE_FROM_CART',

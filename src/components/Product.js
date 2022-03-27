@@ -23,14 +23,14 @@ export default function Product({ product }) {
           </button>
           {cart.some((cartItem) => cartItem.id === product.id) ? (
             <button
-              className="btn_icon_round text-white bg-blue-600"
+              className="btn_icon_round"
               onClick={() =>
                 productsDispatch({
-                  type: 'REMOVE_FROM_CART',
+                  type: 'INCREMENT_QTY',
                   payload: product,
                 })
               }
-              title="Remove from Cart"
+              title="Already Product added"
             >
               <FaShoppingCart className="w-full text-lg" />
             </button>
