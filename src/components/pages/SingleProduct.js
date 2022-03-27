@@ -1,5 +1,6 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { IoReturnUpBackOutline } from 'react-icons/io5';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useProductsContext } from '../../contexts/ProductsContext';
 import Rating from '../Rating';
 
@@ -12,6 +13,7 @@ export default function SingleProduct() {
     productsDispatch,
   } = useProductsContext();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const findProduct = products.find((product) => product.id === parseInt(id));
 
@@ -27,7 +29,13 @@ export default function SingleProduct() {
     <article className="main__container py-10">
       {findProduct ? (
         <div className="grid grid-cols-1 gap-7 items-center md:grid-cols-2">
-          <div className="w-full aspect-video">
+          <div className="w-full aspect-video relative">
+            <button
+              className="btn_icon_round absolute left-5 h-12 w-12 hover:bg-blue-600 hover:text-white text-2xl"
+              onClick={() => navigate(-1)}
+            >
+              <IoReturnUpBackOutline />
+            </button>
             <img
               className="cover__img object-contain"
               src={findProduct?.image}
