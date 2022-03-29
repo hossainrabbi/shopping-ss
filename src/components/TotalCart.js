@@ -32,7 +32,7 @@ export default function TotalCart({ subtotalAll }) {
         </div>
       </div>
       <Link
-        to="/checkout"
+        to="/products/checkout"
         className="btn w-full block h-auto text-xl text-center px-10 py-4 rounded-none"
       >
         Proceed to Checkout

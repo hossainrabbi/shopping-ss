@@ -10,6 +10,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import SingleProduct from './pages/SingleProduct';
+import PrivateOutlet from './PrivateOutlet';
+import PublicOutlet from './PublicOutlet';
 
 export default function App() {
   return (
@@ -20,9 +22,13 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<SingleProduct />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/*" element={<PublicOutlet />}>
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
+            </Route>
+            <Route path="/*" element={<PrivateOutlet />}>
+              <Route path="products/checkout" element={<Checkout />} />
+            </Route>
           </Routes>
         </Layout>
       </AuthContext>

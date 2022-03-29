@@ -14,8 +14,6 @@ export default function Navbar() {
 
   const { currentUser, logout } = useContextAuth();
 
-  console.log(currentUser);
-
   return (
     <nav className="shadow h-16">
       <div className="main__container h-full">
