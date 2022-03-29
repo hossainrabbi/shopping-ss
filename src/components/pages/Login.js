@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginForm from '../LoginForm';
 
 export default function Login() {
   return (
@@ -13,24 +14,7 @@ export default function Login() {
           />
         </div>
         <div>
-          <form className="px-10 md:px-2 lg:px-16">
-            <input
-              className="input_box"
-              type="email"
-              placeholder="Email*"
-              required
-            />
-            <input
-              className="input_box"
-              type="password"
-              placeholder="Password*"
-              required
-            />
-            <button className="btn w-full rounded-md">Login</button>
-            <span className="block text-sm text-red-500 text-center font-medium mt-4 p-2 bg-gray-100 rounded-md">
-              Lorem ipsum dolor sit amet.
-            </span>
-          </form>
+          <LoginForm />
         </div>
       </div>
     </section>

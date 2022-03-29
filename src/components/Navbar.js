@@ -1,17 +1,20 @@
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 import { useContextAuth } from '../contexts/AuthContext';
 import { useProductsContext } from '../contexts/ProductsContext';
+import User from '../images/guest-avatar.jpg';
 import Logo from '../images/logo.png';
-import User from '../images/user.jpg';
 
 export default function Navbar() {
   const {
     productsState: { cart },
   } = useProductsContext();
 
-  const { currentUser } = useContextAuth();
+  const { currentUser, logout } = useContextAuth();
+
+  console.log(currentUser);
 
   return (
     <nav className="shadow h-16">
@@ -31,9 +34,22 @@ export default function Navbar() {
               </span>
             </NavLink>
             {currentUser ? (
-              <button className="btn_icon_round hover:text-gray-800 hover:bg-gray-200 rounded-full mx-3">
-                <img className="rounded-full" src={User} alt="user" />
-              </button>
+              <div className="flex items-center">
+                <button className="btn_icon_round hover:text-gray-800 h-12 w-12 hover:bg-gray-200 rounded-full ml-3">
+                  <img
+                    className="rounded-full"
+                    src={currentUser.photoURL || User}
+                    alt={currentUser.displayName}
+                  />
+                </button>
+                <span>{currentUser.displayName}</span>
+                <button
+                  className="btn_icon_round hover:text-gray-800 hover:bg-white px-0 mx-0 bg-white"
+                  onClick={logout}
+                >
+                  <FiLogOut className="text-lg" />
+                </button>
+              </div>
             ) : (
               <>
                 <NavLink

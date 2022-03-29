@@ -12,8 +12,8 @@ import SingleProduct from './pages/SingleProduct';
 
 export default function App() {
   return (
-    <AuthContext>
-      <ProductsContext>
+    <ProductsContext>
+      <AuthContext>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -23,8 +23,8 @@ export default function App() {
             <Route path="/login" element={<Login />} />
           </Routes>
         </Layout>
-        <ToastContainer autoClose={1000} />
-      </ProductsContext>
-    </AuthContext>
+      </AuthContext>
+      <ToastContainer autoClose={1000} />
+    </ProductsContext>
   );
 }
