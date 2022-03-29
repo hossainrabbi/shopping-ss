@@ -14,15 +14,17 @@ export default function LoginForm() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    try {
-      setLoading(true);
-      await login(email, password);
-      setError('');
-      setLoading(false);
-      navigate('/');
-    } catch {
-      setLoading(false);
-      setError('Fail to Login an Account!');
+    if (email && password) {
+      try {
+        setLoading(true);
+        await login(email, password);
+        setError('');
+        setLoading(false);
+        navigate('/');
+      } catch {
+        setLoading(false);
+        setError('Fail to Login an Account!');
+      }
     }
   }
 
@@ -44,7 +46,7 @@ export default function LoginForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button className="btn w-full rounded-md">
+      <button disabled={loading} className="btn w-full rounded-md">
         {loading ? 'Loading...' : 'Login'}
       </button>
       {error && (

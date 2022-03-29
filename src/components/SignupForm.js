@@ -22,15 +22,17 @@ export default function SignupForm() {
       return setError('Password does not match!');
     }
 
-    try {
-      setLoading(true);
-      await signIn(username, email, password);
-      setError('');
-      setLoading(false);
-      navigate('/');
-    } catch {
-      setLoading(false);
-      setError('Fail to Create an Account!');
+    if (username && email && password && agree) {
+      try {
+        setLoading(true);
+        await signIn(username, email, password);
+        setError('');
+        setLoading(false);
+        navigate('/');
+      } catch {
+        setLoading(false);
+        setError('Fail to Create an Account!');
+      }
     }
   }
 
