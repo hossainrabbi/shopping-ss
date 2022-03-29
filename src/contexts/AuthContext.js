@@ -52,8 +52,6 @@ export const AuthContext = ({ children }) => {
     signIn,
     login,
     logout,
-    loading,
-    setLoading,
     currentUser,
   };
 

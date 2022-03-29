@@ -6,10 +6,11 @@ export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState('');
 
   const navigate = useNavigate();
 
-  const { login, loading, setLoading } = useContextAuth();
+  const { login } = useContextAuth();
 
   async function handleFormSubmit(e) {
     e.preventDefault();
@@ -17,13 +18,14 @@ export default function LoginForm() {
       setLoading(true);
       await login(email, password);
       setError('');
-      navigate('/');
       setLoading(false);
+      navigate('/');
     } catch {
       setLoading(false);
       setError('Fail to Login an Account!');
     }
   }
+
   return (
     <form className="px-10 md:px-2 lg:px-16" onSubmit={handleFormSubmit}>
       <input

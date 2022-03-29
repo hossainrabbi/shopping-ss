@@ -9,10 +9,11 @@ export default function SignupForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState('');
 
   const navigate = useNavigate();
 
-  const { signIn, loading, setLoading } = useContextAuth();
+  const { signIn } = useContextAuth();
 
   async function handleFormSubmit(e) {
     e.preventDefault();
@@ -24,8 +25,8 @@ export default function SignupForm() {
     try {
       setLoading(true);
       await signIn(username, email, password);
-      setLoading(false);
       setError('');
+      setLoading(false);
       navigate('/');
     } catch {
       setLoading(false);
@@ -85,7 +86,7 @@ export default function SignupForm() {
         className="btn w-full rounded-md"
         type="submit"
       >
-        {loading ? 'Loading...' : 'Signup'} Signup
+        {loading ? 'Loading...' : 'Signup'}
       </button>
       {error && (
         <span className="block text-sm text-red-500 text-center font-medium mt-4 p-2 bg-gray-100 rounded-md">
