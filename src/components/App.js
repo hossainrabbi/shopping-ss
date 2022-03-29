@@ -5,6 +5,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import ProductsContext from '../contexts/ProductsContext';
 import Layout from './Layout';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </Layout>
       </AuthContext>

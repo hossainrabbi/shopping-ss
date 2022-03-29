@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaCartPlus, FaHeart, FaShare, FaShoppingCart } from 'react-icons/fa';
+import { FaCartPlus, FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { IoEyeSharp } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useProductsContext } from '../contexts/ProductsContext';
@@ -67,7 +68,7 @@ export default function Product({ product }) {
             className="btn_icon_round"
             onClick={() => navigate(`/products/${id}`)}
           >
-            <FaShare className="w-full text-lg" />
+            <IoEyeSharp className="w-full text-lg" />
           </button>
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function Navbar() {
               className="btn_icon_round hover:text-gray-800 hover:bg-white bg-white mx-3 relative"
             >
               <FaShoppingCart className="text-lg" />
-              <span className="btn_icon_round text-xs h-5 w-5 absolute -top-0 -right-1 bg-orange-600 text-white">
+              <span className="btn_icon_round text-xs h-5 w-5 absolute -top-0 -right-1 bg-orange-600 hover:bg-orange-600 text-white">
                 {cart.length}
               </span>
             </NavLink>
