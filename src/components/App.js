@@ -23,8 +23,8 @@ export default function App() {
             <Route path="/products/:id" element={<SingleProduct />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/*" element={<PublicOutlet />}>
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
             </Route>
             {/* <Route path="signup" element={<Signup />} />
             <Route path="login" element={<Login />} /> */}

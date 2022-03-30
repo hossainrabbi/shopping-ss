@@ -27,7 +27,7 @@ export const AuthContext = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const signIn = async (username, email, password) => {
+  async function signIn(username, email, password) {
     const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email, password);
 
@@ -36,17 +36,17 @@ export const AuthContext = ({ children }) => {
     });
 
     setCurrentUser({ ...auth.currentUser });
-  };
+  }
 
-  const login = (email, password) => {
+  function login(email, password) {
     const auth = getAuth();
     return signInWithEmailAndPassword(auth, email, password);
-  };
+  }
 
-  const logout = () => {
+  function logout() {
     const auth = getAuth();
     return signOut(auth);
-  };
+  }
 
   const value = {
     signIn,
