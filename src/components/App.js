@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthContext';
 import ProductsContext from '../contexts/ProductsContext';
 import Layout from './Layout';
-import AllCategory from './pages/AllCategory';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Home from './pages/Home';
@@ -23,7 +22,6 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<SingleProduct />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/all-category" element={<AllCategory />} />
             <Route path="/*" element={<PublicOutlet />}>
               <Route path="signup" element={<Signup />} />
               <Route path="login" element={<Login />} />

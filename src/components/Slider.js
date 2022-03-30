@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigation, Pagination } from 'swiper';
+import { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -27,13 +27,23 @@ const slidImage = [
 export default function Slider() {
   return (
     <Swiper
+      slidesPerView={1}
+      spaceBetween={30}
+      loop={true}
       navigation={true}
-      pagination={true}
-      modules={[Navigation, Pagination]}
+      pagination={{
+        clickable: true,
+      }}
+      centeredSlides={true}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      modules={[Autoplay, Navigation, Pagination]}
       className="mySwiper"
     >
       {slidImage.map((slide) => (
-        <SwiperSlide className="h-96" key={slide.id}>
+        <SwiperSlide className="h-96 aspect-square" key={slide.id}>
           <img className="cover__img" src={slide?.image} alt="Slide" />
         </SwiperSlide>
       ))}
